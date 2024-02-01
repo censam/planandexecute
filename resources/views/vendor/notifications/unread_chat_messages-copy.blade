@@ -1,0 +1,24 @@
+@component('mail::message')
+Hello {{ucwords($user)}}
+
+
+{{$subject}}
+
+@component('mail::panel')
+<div style="border-radius:50%;"> <img src="{{$chat->user->profile_photo_url}}" border="0" style="border-radius:50%;display:block;object-fit:cover"  width="50" height="50"> </div>
+<h2>{{$messaged_user}}:</h2>
+@foreach ($messages  as $message)
+    <h3>{{$message}} </h3>
+@endforeach
+@endcomponent
+
+@component('mail::button', ['url' => $url,'color'=>'green'])
+Reply To Nudge
+@endcomponent
+
+@lang('Thank You'),<br>
+{{ config('app.name') }}
+
+
+
+@endcomponent
